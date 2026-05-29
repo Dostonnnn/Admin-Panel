@@ -35,7 +35,7 @@ form.addEventListener("submit", (e) => {
         if (data.token) {
           const { token } = data;
           localStorage.setItem("token", token);
-          window.location.href = "./main.js";
+          window.location.href = "../main.html";
         }
       })
       .catch((error) => {
