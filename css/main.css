@@ -1,0 +1,188 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #222;
+  color: #f1f1f1;
+  min-height: 100vh;
+}
+
+.box {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  background: #2b2b2b;
+  padding: 20px 14px;
+  border-right: 1px solid #3a3a3a;
+}
+
+.sidebar-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #fff;
+}
+
+.list ul {
+  list-style: none;
+}
+
+.list-item {
+  padding: 11px 14px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #bdbdbd;
+  transition: all 0.3s linear;
+}
+
+.list-item:hover,
+.list-item.active {
+  background: #3a3a3a;
+  color: #fff;
+}
+
+.main {
+  flex: 1;
+  padding: 20px;
+}
+
+.main-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.main-navbar-title {
+  font-size: 35px;
+  margin-bottom: 18px;
+  color: #fff;
+  text-align: center;
+}
+.search-form {
+  margin: 50px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search-form-input {
+  width: 150px;
+  padding: 10px 14px;
+  border: 1px solid #444;
+  border-radius: 8px;
+  background: #333;
+  color: #fff;
+  outline: none;
+}
+
+.search-form-input:focus {
+  border-color: #666;
+}
+
+.main-title {
+  font-size: 28px;
+  margin-bottom: 18px;
+  color: #fff;
+}
+
+.table-container {
+  background: #2b2b2b;
+  border-radius: 12px;
+  overflow-x: auto;
+  border: 1px solid #3a3a3a;
+}
+
+.products-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.products-table th {
+  background: #333;
+  color: #cfcfcf;
+  text-align: left;
+  padding: 16px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.products-table td {
+  padding: 16px;
+  border-top: 1px solid #3a3a3a;
+  color: #f1f1f1;
+}
+
+.products-table tr:hover {
+  background: #303030;
+}
+
+.table-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #fff;
+  padding: 3px;
+}
+
+.table-price {
+  color: #4ade80;
+  font-weight: 600;
+}
+.btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 200px;
+}
+.add {
+  width: 150px !important;
+}
+.btn-add,
+.btn-cancel,
+.btn-view,
+.btn-edit,
+.btn-delete {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s linear;
+}
+.btn-view,
+.btn-add {
+  background: #444;
+  color: #4ade80;
+}
+.btn-view:hover,
+.btn-add:hover {
+  background: #555;
+}
+.btn-edit,
+.btn-cancel {
+  background: #444;
+  color: #facc15;
+}
+
+.btn-edit:hover,
+.btn-cancel:hover {
+  background: #555;
+}
+
+.btn-delete {
+  background: #444;
+  color: #f87171;
+}
+
+.btn-delete:hover {
+  background: #555;
+}

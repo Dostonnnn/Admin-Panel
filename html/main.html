@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  </head>
+  <body>
+    <div class="box">
+      <div class="sidebar">
+        <h2 class="sidebar-title">Panel</h2>
+        <div class="list">
+          <ul>
+            <li class="list-item active">Product</li>
+            <li class="list-item">User</li>
+            <li class="list-item">Cards</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="main">
+        <nav class="main-navbar">
+          <h2 class="main-navbar-title">Dashboard Navbar</h2>
+        </nav>
+        <form action="" class="search-form">
+          <input
+            name="image"
+            type="url"
+            class="search-form-input image"
+            placeholder="Enter the URl of the image"
+          />
+          <input
+            name="title"
+            type="text"
+            class="search-form-input title"
+            placeholder="Enter the title"
+          />
+          <input
+            name="price"
+            type="number"
+            class="search-form-input price"
+            placeholder="Enter the price"
+          />
+          <input
+            name="category"
+            type="text"
+            class="search-form-input category"
+            placeholder="Enter the category"
+          />
+          <input
+            name="description"
+            type="text"
+            class="search-form-input description"
+            placeholder="Enter the description"
+          />
+          <div class="btns add">
+            <button type="reset" class="btn-cancel">Cancel</button>
+            <button type="submit" class="btn-add">Add</button>
+          </div>
+        </form>
+        <h2 class="main-title">Products</h2>
+
+        <div class="table-container">
+          <table class="products-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Category</th>
+
+                <th>Price</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script src="../js/main.js"></script>
+  </body>
+</html>
