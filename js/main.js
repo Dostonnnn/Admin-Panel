@@ -52,7 +52,7 @@ function showProducts(data) {
                   <div class="btns">
                     <button  onclick="viewProduct(${id})" class="btn-view">View</button>
                     <button class="btn-edit">Edit</button>
-                    <button class="btn-delete">Delete</button>
+                    <button onclick="deleteProduct(${id})" class="btn-delete">Delete</button>
                   </div>
                 </td>
               </tr>`;
@@ -142,4 +142,28 @@ function viewProduct(id) {
         .querySelector(".close-btn")
         .addEventListener("click", closeModal);
     });
+}
+function deleteProduct(id) {
+  fetch(`https://fakestoreapi.com/products/${id}`, {
+    method: "DELETE",
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("Deleted product:", data);
+      Toastify({
+        text: "Deleted Successfully",
+        duration: 3000,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: true,
+        gravity: "top",
+        position: "right",
+        stopOnFocus: true,
+        style: {
+          background: "linear-gradient(to right, #4ade80, #4ade80)",
+        },
+        onClick: function () {},
+      }).showToast();
+    })
+    .catch((err) => console.log(err));
 }
