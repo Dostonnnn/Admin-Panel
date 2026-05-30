@@ -14,10 +14,13 @@ body {
 .box {
   display: flex;
   min-height: 100vh;
+  position: relative;
 }
 
 .sidebar {
-  width: 240px;
+  position: fixed;
+  width: 20%;
+  height: 100vh;
   background: #2b2b2b;
   padding: 20px 14px;
   border-right: 1px solid #3a3a3a;
@@ -50,6 +53,9 @@ body {
 }
 
 .main {
+  position: absolute;
+  right: 0;
+  width: 80%;
   flex: 1;
   padding: 20px;
 }
@@ -70,7 +76,9 @@ body {
   margin: 50px auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
 }
 
 .search-form-input {
@@ -185,4 +193,84 @@ body {
 
 .btn-delete:hover {
   background: #555;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.back {
+  display: none;
+}
+
+.modal-content {
+  width: 450px;
+  background: #2b2b2b;
+  border: 1px solid #3a3a3a;
+  border-radius: 12px;
+  padding: 20px;
+  position: relative;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.modal-body img {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.modal-id {
+  color: #4ade80;
+  font-weight: 600;
+}
+
+.modal-title {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.modal-des {
+  color: #cfcfcf;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.modal-cat {
+  color: #facc15;
+  text-transform: capitalize;
+}
+
+.modal-price {
+  color: #4ade80;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #f87171;
 }

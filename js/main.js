@@ -50,7 +50,7 @@ function showProducts(data) {
                 <td class="table-price">${price}</td>
                 <td>
                   <div class="btns">
-                    <button class="btn-view">View</button>
+                    <button  onclick="viewProduct(${id})" class="btn-view">View</button>
                     <button class="btn-edit">Edit</button>
                     <button class="btn-delete">Delete</button>
                   </div>
@@ -105,4 +105,41 @@ form.addEventListener("submit", (e) => {
 
 function deleteProduct(id) {
   console.log(id);
+}
+const modal = document.querySelector(".modal");
+function openModal() {
+  modal.classList.remove("back");
+}
+
+function closeModal() {
+  modal.classList.add("back");
+}
+
+function viewProduct(id) {
+  console.log("ishladi", id);
+  fetch(`https://fakestoreapi.com/products/${id}`)
+    .then((response) => response.json())
+    .then((data) => {
+      const { description, title, category, image, price, id } = data;
+
+      modal.innerHTML = `
+        <div class="modal-content">
+          <span class="close-btn">X</span>
+          <div class="modal-body">
+            <img src="${image}" alt="${description}" />
+            <span class="modal-id">${id}</span>
+            <p class="modal-title">${title}</p>
+            <p class="modal-des">${description}</p>
+            <p class="modal-cat">${category}</p>
+            <p class="modal-price">${price}</p>
+          </div>
+        </div>
+      `;
+
+      openModal();
+
+      document
+        .querySelector(".close-btn")
+        .addEventListener("click", closeModal);
+    });
 }
