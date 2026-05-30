@@ -150,6 +150,7 @@ function deleteProduct(id) {
     .then((res) => res.json())
     .then((data) => {
       console.log("Deleted product:", data);
+
       Toastify({
         text: "Deleted Successfully",
         duration: 3000,
