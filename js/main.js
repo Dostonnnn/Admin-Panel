@@ -1,7 +1,9 @@
 "use strict";
+
 const api = `https://fakestoreapi.com/products`;
 const tbody = document.querySelector("tbody");
 let products;
+
 function getProduct(url) {
   fetch(url, {
     method: "GET",
@@ -36,26 +38,35 @@ getProduct(api);
 function showProducts(data) {
   data.forEach((element) => {
     const { description, title, category, id, image, price } = element;
-    tbody.innerHTML += `<tr>
-                <td>${id}</td>
-                <td>
-                  <img
-                    src="${image}"
-                    alt="${description}"
-                    class="table-img"
-                  />
-                </td>
-                <td>${title}</td>
-                <td>${category}</td>
-                <td class="table-price">${price}</td>
-                <td>
-                  <div class="btns">
-                    <button  onclick="viewProduct(${id})" class="btn-view">View</button>
-                    <button class="btn-edit">Edit</button>
-                    <button onclick="deleteProduct(${id})" class="btn-delete">Delete</button>
-                  </div>
-                </td>
-              </tr>`;
+
+    tbody.innerHTML += `
+      <tr>
+        <td>${id}</td>
+        <td>
+          <img
+            src="${image}"
+            alt="${description}"
+            class="table-img"
+          />
+        </td>
+        <td>${title}</td>
+        <td>${category}</td>
+        <td class="table-price">${price}</td>
+        <td>
+          <div class="btns">
+            <button onclick="viewProduct(${id})" class="btn-view">
+              View
+            </button>
+            <button onclick="showEditModal(${id})" class="btn-edit">
+              Edit
+            </button>
+            <button onclick="deleteProduct(${id})" class="btn-delete">
+              Delete
+            </button>
+          </div>
+        </td>
+      </tr>
+    `;
   });
 }
 
@@ -80,7 +91,9 @@ form.addEventListener("submit", (e) => {
 
   fetch(api, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify(product),
   })
     .then((res) => res.json())
@@ -99,14 +112,13 @@ form.addEventListener("submit", (e) => {
         },
         onClick: function () {},
       }).showToast();
+
       console.log(data);
     });
 });
 
-function deleteProduct(id) {
-  console.log(id);
-}
 const modal = document.querySelector(".modal");
+
 function openModal() {
   modal.classList.remove("back");
 }
@@ -117,6 +129,7 @@ function closeModal() {
 
 function viewProduct(id) {
   console.log("ishladi", id);
+
   fetch(`https://fakestoreapi.com/products/${id}`)
     .then((response) => response.json())
     .then((data) => {
@@ -125,6 +138,7 @@ function viewProduct(id) {
       modal.innerHTML = `
         <div class="modal-content">
           <span class="close-btn">X</span>
+
           <div class="modal-body">
             <img src="${image}" alt="${description}" />
             <span class="modal-id">${id}</span>
@@ -143,6 +157,7 @@ function viewProduct(id) {
         .addEventListener("click", closeModal);
     });
 }
+
 function deleteProduct(id) {
   fetch(`https://fakestoreapi.com/products/${id}`, {
     method: "DELETE",
@@ -168,3 +183,85 @@ function deleteProduct(id) {
     })
     .catch((err) => console.log(err));
 }
+
+const editModal = document.querySelector(".edit-modal");
+const goBack = document.querySelector(".btn-cancel2");
+const body = document.querySelector("body");
+const updateBtn = document.querySelector(".btn-update");
+
+function showEditWindow(id) {
+  const editForm = document.querySelector(".edit-form");
+
+  let imageValue = editForm["image2"];
+  let titleValue = editForm["title2"];
+  let priceValue = editForm["price2"];
+  let categoryValue = editForm["category2"];
+  let descriptionValue = editForm["description2"];
+
+  fetch(`https://fakestoreapi.com/products/${id}`)
+    .then((res) => res.json())
+    .then((data) => {
+      const { description, title, category, image, price } = data;
+
+      imageValue.value = image;
+      descriptionValue.value = description;
+      titleValue.value = title;
+      categoryValue.value = category;
+      priceValue.value = price;
+    });
+
+  updateBtn.onclick = (e) => {
+    e.preventDefault();
+
+    const productObject = {
+      image: imageValue.value,
+      title: titleValue.value,
+      description: descriptionValue.value,
+      category: categoryValue.value,
+      price: priceValue.value,
+    };
+
+    fetch(`https://fakestoreapi.com/products/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(productObject),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        closeEditModal();
+        console.log(data);
+        Toastify({
+          text: "Updated Successfully",
+          duration: 3000,
+          destination: "https://github.com/apvarun/toastify-js",
+          newWindow: true,
+          close: true,
+          gravity: "top",
+          position: "right",
+          stopOnFocus: true,
+          style: {
+            background: "linear-gradient(to right, #4ade80, #4ade80)",
+          },
+          onClick: function () {},
+        }).showToast();
+      });
+  };
+}
+
+function showEditModal(id) {
+  editModal.classList.remove("hidden");
+  showEditWindow(id);
+  body.style.overflow = "hidden";
+}
+
+function closeEditModal() {
+  editModal.classList.add("hidden");
+  body.style.overflow = "auto";
+}
+
+goBack.addEventListener("click", (e) => {
+  e.preventDefault();
+  closeEditModal();
+});
