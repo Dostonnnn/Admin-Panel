@@ -73,7 +73,8 @@ body {
   text-align: center;
 }
 .search-form,
-.edit-form {
+.edit-form,
+.user-form {
   margin: 50px auto;
   display: flex;
   align-items: center;
@@ -102,19 +103,22 @@ body {
   color: #fff;
 }
 
-.table-container {
+.table-container,
+.user-container {
   background: #2b2b2b;
   border-radius: 12px;
   overflow-x: auto;
   border: 1px solid #3a3a3a;
 }
 
-.products-table {
+.products-table,
+.user-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.products-table th {
+.products-table th,
+.user-table th {
   background: #333;
   color: #cfcfcf;
   text-align: left;
@@ -123,13 +127,15 @@ body {
   font-weight: 500;
 }
 
-.products-table td {
+.products-table td,
+.user-table td {
   padding: 16px;
   border-top: 1px solid #3a3a3a;
   color: #f1f1f1;
 }
 
-.products-table tr:hover {
+.products-table tr:hover,
+.user-table tr:hover {
   background: #303030;
 }
 
@@ -173,21 +179,27 @@ button {
 .btn-view,
 .btn-add,
 .btn-update,
-.men {
+.men,
+.user-add,
+.user-view {
   background: #444;
   color: #4ade80;
 }
 .btn-view:hover,
 .btn-add:hover,
 .btn-update:hover,
-.men:hover {
+.men:hover,
+.user-add:hover,
+.user-view:hover {
   background: #555;
 }
 .btn-edit,
 .btn-cancel,
 .btn-cancel2,
 .jewelry,
-.women {
+.women,
+.user-cancel,
+.user-edit {
   background: #444;
   color: #facc15;
 }
@@ -196,22 +208,27 @@ button {
 .btn-cancel:hover,
 .btn-cancel2:hover,
 .women:hover,
-.jewelry:hover {
+.jewelry:hover,
+.user-cancel:hover,
+.user-edit {
   background: #555;
 }
 
 .btn-delete,
-.electronic {
+.electronic,
+.user-delete {
   background: #444;
   color: #f87171;
 }
 
 .btn-delete:hover,
-.electronic:hover {
+.electronic:hover,
+.user-delete:hover {
   background: #555;
 }
 
-.modal {
+.modal,
+.user-modal {
   position: fixed;
   top: 0;
   z-index: 5;
@@ -228,7 +245,8 @@ button {
   display: none;
 }
 
-.modal-content {
+.modal-content,
+.user-modal-content {
   width: 450px;
   background: #2b2b2b;
   border: 1px solid #3a3a3a;
@@ -237,7 +255,8 @@ button {
   position: relative;
 }
 
-.modal-body {
+.modal-body,
+.user-modal-body {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -280,7 +299,9 @@ button {
   font-weight: 700;
 }
 
-.close-btn {
+.close-btn,
+.close-btn2,
+.user-close-btn {
   position: absolute;
   top: 10px;
   right: 15px;
@@ -290,7 +311,8 @@ button {
   color: #f87171;
 }
 
-.edit-modal {
+.edit-modal,
+.edit-user-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -314,4 +336,39 @@ button {
   justify-content: start;
   gap: 50px;
   margin: 30px auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.user-modal-body {
+  display: flex !important;
+  align-items: self-start !important;
+  justify-content: flex-start !important;
+}
+.user-modal-id {
+  padding: 10px 15px;
+  background-color: #222;
+  border-radius: 8px;
+  color: #4ade80;
+}
+.user-modal-username {
+  padding: 10px 15px;
+  background-color: #222;
+  border-radius: 8px;
+  color: #f87171;
+}
+.user-modal-email {
+  padding: 10px 15px;
+  background-color: #222;
+  border-radius: 8px;
+  color: #facc15;
+}
+.user-modal-password {
+  padding: 10px 15px;
+  background-color: #222;
+  border-radius: 8px;
+  color: #4ade80;
 }

@@ -128,7 +128,7 @@ function closeModal() {
 }
 
 function viewProduct(id) {
-  console.log("ishladi", id);
+  console.log(id);
 
   fetch(`https://fakestoreapi.com/products/${id}`)
     .then((response) => response.json())
@@ -265,7 +265,6 @@ goBack.addEventListener("click", (e) => {
   e.preventDefault();
   closeEditModal();
 });
-
 const jewelry = document.querySelector(".jewelry");
 const men = document.querySelector(".men");
 const women = document.querySelector(".women");

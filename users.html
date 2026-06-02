@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Users</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+  </head>
+  <body>
+    <div class="box">
+      <div class="sidebar">
+        <h2 class="sidebar-title">Panel</h2>
+        <div class="list">
+          <ul>
+            <li class="list-item"><a href="./main.html">Products</a></li>
+            <li class="list-item active"><a href="./users.html">Users</a></li>
+            <li class="list-item">Cards</li>
+          </ul>
+        </div>
+      </div>
+      <div class="main">
+        <nav class="main-navbar">
+          <h2 class="main-navbar-title">Dashboard Navbar</h2>
+        </nav>
+        <form action="" class="user-form">
+          <input
+            name="id"
+            type="number"
+            class="search-form-input id"
+            placeholder="Enter user ID"
+          />
+          <input
+            name="username"
+            type="text"
+            class="search-form-input username"
+            placeholder="Enter the username"
+          />
+          <input
+            name="email"
+            type="email"
+            class="search-form-input email"
+            placeholder="Enter the email"
+          />
+          <input
+            name="password"
+            type="password"
+            class="search-form-input password"
+            placeholder="Enter the password"
+          />
+          <div class="btns add">
+            <button type="reset" class="user-cancel">Cancel</button>
+            <button type="submit" class="user-add">Add</button>
+          </div>
+        </form>
+
+        <h2 class="main-title">Users</h2>
+        <div class="user-container">
+          <table class="user-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody class="tbody2"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="user-modal back"></div>
+    </div>
+    <script src="./js/users.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+  </body>
+</html>
