@@ -266,10 +266,6 @@ goBack.addEventListener("click", (e) => {
   closeEditModal();
 });
 
-//filter
-
-// === FILTRLASH QISMI ===
-
 const jewelry = document.querySelector(".jewelry");
 const men = document.querySelector(".men");
 const women = document.querySelector(".women");
