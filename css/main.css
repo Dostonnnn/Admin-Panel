@@ -161,7 +161,8 @@ body {
 .btn-edit,
 .btn-delete,
 .btn-update,
-.btn-cancel2 {
+.btn-cancel2,
+button {
   border: none;
   padding: 8px 14px;
   border-radius: 6px;
@@ -171,34 +172,42 @@ body {
 }
 .btn-view,
 .btn-add,
-.btn-update {
+.btn-update,
+.men {
   background: #444;
   color: #4ade80;
 }
 .btn-view:hover,
 .btn-add:hover,
-.btn-update:hover {
+.btn-update:hover,
+.men:hover {
   background: #555;
 }
 .btn-edit,
 .btn-cancel,
-.btn-cancel2 {
+.btn-cancel2,
+.jewelry,
+.women {
   background: #444;
   color: #facc15;
 }
 
 .btn-edit:hover,
 .btn-cancel:hover,
-.btn-cancel2:hover {
+.btn-cancel2:hover,
+.women:hover,
+.jewelry:hover {
   background: #555;
 }
 
-.btn-delete {
+.btn-delete,
+.electronic {
   background: #444;
   color: #f87171;
 }
 
-.btn-delete:hover {
+.btn-delete:hover,
+.electronic:hover {
   background: #555;
 }
 
@@ -297,4 +306,12 @@ body {
 }
 .hidden {
   display: none;
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 50px;
+  margin: 30px auto;
 }

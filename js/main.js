@@ -265,3 +265,80 @@ goBack.addEventListener("click", (e) => {
   e.preventDefault();
   closeEditModal();
 });
+
+//filter
+
+// === FILTRLASH QISMI ===
+
+const jewelry = document.querySelector(".jewelry");
+const men = document.querySelector(".men");
+const women = document.querySelector(".women");
+const elect = document.querySelector(".electronic");
+
+function showMen() {
+  fetch("https://fakestoreapi.com/products")
+    .then((response) => response.json())
+    .then((data) => {
+      const menProducts = data.filter(
+        (item) => item.category === "men's clothing",
+      );
+      tbody.innerHTML = "";
+      showProducts(menProducts);
+      console.log(menProducts);
+    });
+}
+men.addEventListener("click", (e) => {
+  e.preventDefault();
+  showMen();
+});
+
+function showWomen() {
+  fetch("https://fakestoreapi.com/products")
+    .then((response) => response.json())
+    .then((data) => {
+      const womenProducts = data.filter(
+        (item) => item.category === "women's clothing",
+      );
+      tbody.innerHTML = "";
+      showProducts(womenProducts);
+      console.log(womenProducts);
+    });
+}
+women.addEventListener("click", (e) => {
+  e.preventDefault();
+  showWomen();
+});
+
+function showJewelry() {
+  fetch("https://fakestoreapi.com/products")
+    .then((response) => response.json())
+    .then((data) => {
+      const jewelryProducts = data.filter(
+        (item) => item.category === "jewelery",
+      );
+      tbody.innerHTML = "";
+      showProducts(jewelryProducts);
+      console.log(jewelryProducts);
+    });
+}
+jewelry.addEventListener("click", (e) => {
+  e.preventDefault();
+  showJewelry();
+});
+
+function showElect() {
+  fetch("https://fakestoreapi.com/products")
+    .then((response) => response.json())
+    .then((data) => {
+      const ElectProducts = data.filter(
+        (item) => item.category === "electronics",
+      );
+      tbody.innerHTML = "";
+      showProducts(ElectProducts);
+      console.log(ElectProducts);
+    });
+}
+elect.addEventListener("click", (e) => {
+  e.preventDefault();
+  showElect();
+});
