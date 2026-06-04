@@ -171,9 +171,9 @@ function showEditWindow(id) {
       body: JSON.stringify(updatedUser),
     })
       .then((res) => res.json())
-      .then(() => {
-        closeEditModal();
-
+      .then((data) => {
+        closeEditModal(data);
+        console.log(data);
         Toastify({
           text: "Updated Successfully",
           duration: 3000,

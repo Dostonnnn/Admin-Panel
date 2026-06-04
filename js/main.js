@@ -258,7 +258,7 @@ function showEditModal(id) {
 
 function closeEditModal() {
   editModal.classList.add("hidden");
-  bodyL.style.overflow = "auto";
+  body.style.overflow = "auto";
 }
 goBack.addEventListener("click", (e) => {
   e.preventDefault();
