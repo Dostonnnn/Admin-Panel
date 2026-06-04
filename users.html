@@ -23,10 +23,12 @@
           </ul>
         </div>
       </div>
+
       <div class="main">
         <nav class="main-navbar">
           <h2 class="main-navbar-title">Dashboard Navbar</h2>
         </nav>
+
         <form action="" class="user-form">
           <input
             name="id"
@@ -59,6 +61,7 @@
         </form>
 
         <h2 class="main-title">Users</h2>
+
         <div class="user-container">
           <table class="user-table">
             <thead>
@@ -74,12 +77,45 @@
           </table>
         </div>
       </div>
+
       <div class="user-modal back"></div>
+
+      <div class="user-edit-modal hidden">
+        <form action="" class="user-edit-form">
+          <input
+            name="id2"
+            type="number"
+            class="search-form-input id"
+            placeholder="Enter the ID"
+          />
+          <input
+            name="username2"
+            type="text"
+            class="search-form-input username"
+            placeholder="Enter username"
+          />
+          <input
+            name="email2"
+            type="email"
+            class="search-form-input email"
+            placeholder="Enter email"
+          />
+          <input
+            name="password2"
+            type="password"
+            class="search-form-input password"
+            placeholder="Enter password"
+          />
+
+          <div class="btns add">
+            <button type="reset" class="user-btn-cancel2">Cancel</button>
+            <button type="submit" class="user-btn-update2">Add</button>
+          </div>
+        </form>
+      </div>
     </div>
+
     <script src="./js/users.js"></script>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/toastify-js"
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   </body>
 </html>

@@ -181,7 +181,8 @@ button {
 .btn-update,
 .men,
 .user-add,
-.user-view {
+.user-view,
+.user-btn-update2 {
   background: #444;
   color: #4ade80;
 }
@@ -190,7 +191,8 @@ button {
 .btn-update:hover,
 .men:hover,
 .user-add:hover,
-.user-view:hover {
+.user-view:hover,
+.user-btn-update2:hover {
   background: #555;
 }
 .btn-edit,
@@ -199,7 +201,8 @@ button {
 .jewelry,
 .women,
 .user-cancel,
-.user-edit {
+.user-edit,
+.user-btn-cancel2 {
   background: #444;
   color: #facc15;
 }
@@ -210,7 +213,8 @@ button {
 .women:hover,
 .jewelry:hover,
 .user-cancel:hover,
-.user-edit {
+.user-edit:hover,
+.user-btn-cancel2:hover {
   background: #555;
 }
 
@@ -312,7 +316,7 @@ button {
 }
 
 .edit-modal,
-.edit-user-modal {
+.user-edit-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -325,6 +329,12 @@ button {
   align-items: center;
   justify-content: center;
   z-index: 9999;
+}
+.user-edit-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
 }
 .hidden {
   display: none;
