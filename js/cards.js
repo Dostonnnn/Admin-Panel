@@ -2,18 +2,16 @@
 
 const api = "https://fakestoreapi.com/carts";
 const userApi = "https://fakestoreapi.com/users";
-
 const tbody = document.querySelector(".card-tbody");
-const tbody2 = document.querySelector(".card-tbody2");
-const addForm = document.querySelectorAll(".card-form")[0];
-
 let editId;
 
 getUsers();
+
 const editForm = document.querySelectorAll(".card-form")[1];
 const display = document.querySelector(".display");
 const modal = document.querySelector(".card-modal");
 const editModal = document.querySelector(".card-edit");
+
 function getUsers() {
   fetch(userApi, {
     method: "GET",
@@ -41,6 +39,9 @@ function getUsers() {
     });
 }
 
+const tbody2 = document.querySelector(".card-tbody2");
+const addForm = document.querySelectorAll(".card-form")[0];
+
 function renderUsers(data) {
   tbody.innerHTML = "";
 
@@ -66,63 +67,72 @@ function renderUsers(data) {
 }
 
 function getCard(id) {
-  fetch(`${api}/${id}`)
+  fetch(`https://fakestoreapi.com/carts/${id}`)
     .then((res) => res.json())
     .then((data) => {
       tbody2.innerHTML = "";
 
-      data.products.forEach((p) => {
-        tbody2.innerHTML += `
-          <tr>
-            <td>${data.id}</td>
-            <td>${data.userId}</td>
-            <td>${data.date}</td>
-            <td>${p.productId}</td>
-            <td>${p.quantity}</td>
-            <td>
-              <div class="btns">
-                <button onclick="editCard(${data.id})" class="btn-edit">Edit</button>
-                <button onclick="deleteCard(${data.id})" class="btn-delete">Delete</button>
-                <button onclick="closeDisplay()" class="btn-cancel2">Close</button>
-              </div>
-            </td>
-          </tr>
-        `;
+      data.products.map((item) => {
+        fetch(`https://fakestoreapi.com/products/${item.productId}`)
+          .then((res) => res.json())
+          .then((product) => {
+            tbody2.innerHTML += `
+              <tr>
+                <td>${data.id}</td>
+                <td>${product.description.slice(0, 50)}...</td>
+                <td>${data.date}</td>
+                <td>
+                  <img
+                    src="${product.image}"
+                    alt="${product.title}"
+                    width="60"
+                    height="60"
+                  />
+                </td>
+                <td>${item.quantity}</td>
+                <td>
+                  <div class="btns">
+                    <button onclick="closeDisplay()" class="btn-cancel2">
+                      Close
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            `;
+          });
       });
 
       display.classList.remove("hidden");
     });
 }
 
-modal.innerHTML = `
-  <span class="card-can">X</span>
-`;
-
 function editCard(id) {
   editId = id;
 
-  fetch(`${api}/${id}`)
+  fetch(`https://fakestoreapi.com/carts/${id}`)
     .then((res) => res.json())
     .then((data) => {
-      document.querySelector("[name='userId2']").value = data.userId;
-      document.querySelector("[name='date2']").value = data.date.split("T")[0];
-      document.querySelector("[name='productId2']").value =
-        data.products[0].productId;
-      document.querySelector("[name='quantity2']").value =
-        data.products[0].quantity;
+      const userId2 = document.querySelector("[name='userId2']");
+      const date2 = document.querySelector("[name='date2']");
+      const productId2 = document.querySelector("[name='productId2']");
+      const quantity2 = document.querySelector("[name='quantity2']");
+
+      userId2.value = data.userId;
+      date2.value = data.date;
+      productId2.value = data.products[0].productId;
+      quantity2.value = data.products[0].quantity;
+
       modal.classList.remove("hidden");
       editModal.classList.remove("hidden");
     });
 }
 
 function deleteCard(id) {
-  fetch(`${api}/${id}`, {
+  fetch(`https://fakestoreapi.com/carts/${id}`, {
     method: "DELETE",
   })
     .then((res) => res.json())
-    .then((data) => {
-      console.log("Deleted:", data);
-
+    .then(() => {
       Toastify({
         text: "Deleted Successfully",
         duration: 3000,
@@ -137,7 +147,9 @@ function deleteCard(id) {
         onClick: function () {},
       }).showToast();
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      throw new Error(err);
+    });
 }
 
 addForm.addEventListener("submit", (e) => {
@@ -149,12 +161,12 @@ addForm.addEventListener("submit", (e) => {
   const quantity = addForm["quantity"].value;
 
   const cartObject = {
-    userId: Number(userId),
+    userId: userId,
     date: date,
     products: [
       {
-        productId: Number(productId),
-        quantity: Number(quantity),
+        productId: productId,
+        quantity: quantity,
       },
     ],
   };
@@ -167,9 +179,7 @@ addForm.addEventListener("submit", (e) => {
     body: JSON.stringify(cartObject),
   })
     .then((res) => res.json())
-    .then((data) => {
-      console.log("Added:", data);
-
+    .then(() => {
       Toastify({
         text: "Added Successfully",
         duration: 3000,
@@ -197,17 +207,17 @@ editForm.addEventListener("submit", (e) => {
   const quantity = editForm["quantity2"].value;
 
   const cartObject = {
-    userId: Number(userId),
+    userId: userId,
     date: date,
     products: [
       {
-        productId: Number(productId),
-        quantity: Number(quantity),
+        productId: productId,
+        quantity: quantity,
       },
     ],
   };
 
-  fetch(`${api}/${editId}`, {
+  fetch(`https://fakestoreapi.com/carts/${editId}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -215,9 +225,7 @@ editForm.addEventListener("submit", (e) => {
     body: JSON.stringify(cartObject),
   })
     .then((res) => res.json())
-    .then((data) => {
-      console.log("Updated:", data);
-
+    .then(() => {
       Toastify({
         text: "Updated Successfully",
         duration: 3000,
@@ -245,12 +253,8 @@ function closeDisplay() {
   display.classList.add("hidden");
 }
 
-document.querySelector(".card-can").addEventListener("click", (e) => {
+const cardCan = document.querySelector(".card-can");
+cardCan.addEventListener("click", (e) => {
   e.preventDefault();
   closeEditModal();
-});
-
-document.querySelector(".card-cancel").addEventListener("click", (e) => {
-  e.preventDefault();
-  closeDisplay();
 });
